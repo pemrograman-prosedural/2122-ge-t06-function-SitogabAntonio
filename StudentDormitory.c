@@ -71,7 +71,7 @@ void print_dorms(struct dorm_t *_dorm, int size){
 void print_students_dorm(struct student_dormitory_t *students_dorms, int students_size, struct dorm_t *_dorm, int droms_size)
 {
 
-  printf("too hard");
+ 
 }
 
 void assign_students(struct student_dormitory_t *students_dorms, struct dorm_t *dorms, struct student_t *students, int size_dorms, int size_students)
