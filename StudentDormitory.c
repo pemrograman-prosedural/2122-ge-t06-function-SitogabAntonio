@@ -39,13 +39,14 @@ void print_students(struct student_t *_students, int size){
   {
     if (_students[i].gender == MALE)  
     {
-      printf("%s#%s#%s#%s#MALE\n", _students[i].id, _students[i].name, _students[i].year, _students[i].study_program);
+      printf("%s#%s#%s#%s%s\n", _students[i].id, _students[i].name, _students[i].year, _students[i].study_program, _students[i].gender);
     } else if (_students[i].gender == FEMALE) {
-      printf("%s#%s#%s#%s#FEMALE\n", _students[i].id, _students[i].name, _students[i].year, _students[i].study_program);
+      printf("%s#%s#%s#%s%s\n", _students[i].id, _students[i].name, _students[i].year, _students[i].study_program, _students[i].gender);
     }
   }
 
 }
+
 
 void print_dorms(struct dorm_t *_dorm, int size){
   printf("Dorms:\n");
@@ -68,11 +69,33 @@ void print_dorms(struct dorm_t *_dorm, int size){
 }
 
 
-void print_students_dorm(struct student_dormitory_t *students_dorms, int students_size, struct dorm_t *_dorm, int droms_size)
+void print_students_dorm(struct student_dormitory_t *students_dorms, int students_size, struct dorm_t *dorms, int droms_size)
 {
-
- 
+  int lk;
+  int pr;
+  printf("\n");
+  for (int i = 0; i < droms_size; i++)
+  {
+    printf("%s#%i#", dorms[i].dormitory_name, dorms[i].capacity);
+    if (dorms[i].status == 0)
+    {
+      printf("Available#");
+    }
+    else if (dorms[i].status == 1)
+    {
+      printf("Not Available#");
+    }
+    if (dorms[i].type == 0)
+    {
+      printf("For Male\n");
+    }
+    else if (dorms[i].type == 1)
+    {
+      printf("For Female\n");
+    }
+  }
 }
+
 
 void assign_students(struct student_dormitory_t *students_dorms, struct dorm_t *dorms, struct student_t *students, int size_dorms, int size_students)
 {
@@ -108,6 +131,21 @@ void assign_students(struct student_dormitory_t *students_dorms, struct dorm_t *
     else if (dorms[i].type == 1)
     {
       printf("For Female\n");
+    }
+  }
+  int lk = 0;
+  int pr = 0;
+  for (int i = 0; i < size_students; i++)
+  {
+    if (students[i].gender == 0)
+    {
+      dorms[1].capacity--;
+      lk++;
+    }
+    else if (students[i].gender == 1)
+    {
+      dorms[0].capacity--;
+      pr++;
     }
   }
 }
