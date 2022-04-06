@@ -25,8 +25,8 @@ Berikut adalah format keluaran untuk setiap upaya menampilkan informasi dari ent
 
 ### Compilation
 Proses kompilasi harus menyertakan program dan ```StudentDormitory.c``` yang berisi implementasi dari spesifikasi. Berikut ini adalah contoh perintah untuk mengkompilasi ```t06_01.c```.
-```
-> gcc t06_01.c StudentDormitory.c -o t06_01
+```gcc t06_01.c StudentDormitory.c -o t06_01
+> 
 ```
 Dari kompilasi akan dihasilkan sebuah berkas executable ```t06_01```.
 

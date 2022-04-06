@@ -67,13 +67,82 @@ void print_dorms(struct dorm_t *_dorm, int size){
   }
 }
 
-void print_students_dorm(struct student_dormitory_t *students_dorms, int students_size, struct dorm_t *_dorm, int droms_size)
+void print_students_dorm(struct student_dormitory_t *students_dorms,int students_size, struct dorm_t *dorms, int droms_size, struct student_t *students)
 {
-  
-  // CODE
+   
+    
+    int cewe = 0;
+    int cowo = 0;
 
+    for (int dor = 0; dor < droms_size; dor++)
+    {
+        int lk = 0;
+        int pr = 0;
+        int batas = 0;
+
+        for (int i = cowo; i < students_size; i++)
+        {
+            if (students[i].gender == 0 && dorms[dor].capacity != 0 && dorms[dor].type == 0)
+            {
+                dorms[dor].capacity--;
+                batas++;
+            }
+        }
+
+        for (int i = cewe; i < students_size; i++)
+        {
+            if (students[i].gender == 1 && dorms[dor].capacity != 0 && dorms[dor].type == 1)
+            {
+                dorms[dor].capacity--;
+                batas++;
+            }
+        }
+
+        printf("\n%s#%i#", dorms[dor].dormitory_name, dorms[dor].capacity);
+        if (dorms[dor].capacity > 0)
+        {
+            printf("Available#");
+        }
+        if (dorms[dor].capacity == 0)
+        {
+            printf("Not Available#");
+        }
+        if (dorms[dor].type == 0)
+        {
+            printf("For Male\n");
+            for (int dar = cowo; dar < students_size; dar++)
+            {
+                if (students[dar].gender == 0 && lk != batas)
+                {
+                    lk++;
+                    cowo = dar + 1;
+                    printf("%s#%s#%s#%s\n", students[dar].id, students[dar].name, students[dar].year, students[dar].study_program);
+                }
+            }
+            if (lk == 0)
+            {
+                printf("0\n");
+            }
+        }
+        else if (dorms[dor].type == 1)
+        {
+            printf("For Female\n");
+            for (int dar = cewe; dar < students_size; dar++)
+            {
+                if (students[dar].gender == 1 && pr != batas)
+                {
+                    pr++;
+                    cewe = dar + 1;
+                    printf("%s#%s#%s#%s\n", students[dar].id, students[dar].name, students[dar].year, students[dar].study_program);
+                }
+            }
+            if (pr == 0)
+            {
+                printf("0\n");
+            }
+        }
+    }
 }
-
 void assign_students(struct student_dormitory_t *students_dorms, struct dorm_t *dorms, struct student_t *students, int size_dorms, int size_students)
 {
   printf("Students:\n");
@@ -115,7 +184,7 @@ void assign_students(struct student_dormitory_t *students_dorms, struct dorm_t *
 struct dorm_t check_dorm(struct dorm_t *dorms, int size, enum type_t gender)
 {
   struct dorm_t temp;
-
+  
   // CODE
 
   return temp;

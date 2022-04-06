@@ -38,7 +38,7 @@ int main(int _argc, char **_argv)
 
   assign_students(students_dorms, dorm, std, 4, 10);
 
-  print_students_dorm(students_dorms, 10, dorm, 4);
+  print_students_dorm(students_dorms, 10, dorm, 4,std);
 
   return 0;
 }
